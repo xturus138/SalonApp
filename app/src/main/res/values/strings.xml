@@ -5,4 +5,25 @@
     <string name="our_service">Our Service</string>
     <string name="title">Welcome to SEA SALON!</string>
     <string name="description">Beauty and Elegance Redefined</string>
+
+    <string name="title_service">Title</string>
+    <string name="description_service">Deskripsi</string>
+
+    <string-array name="data_name">
+        <item>Haircut &amp; Styling</item>
+        <item>Manicure &amp; Pedicure</item>
+        <item>Facial Treatments</item>
+    </string-array>
+
+    <string-array name="data_description">
+        <item>Snips, shapes, and styling for your locks.</item>
+        <item>Nail care, polish, and relaxation for hands and feet.</item>
+        <item>Cleansing, exfoliating, and rejuvenating your skin.</item>
+    </string-array>
+
+    <integer-array name="data_photo">
+        <item>@drawable/haircut</item>
+        <item>@drawable/washing</item>
+        <item>@drawable/beardshaving</item>
+    </integer-array>
 </resources>
