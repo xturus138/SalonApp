@@ -1,55 +1,24 @@
 package com.example.comfestsea16
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.comfestsea16.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var rvService: RecyclerView
-    private lateinit var binding: ActivityMainBinding
-    private val list = ArrayList<Service>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        rvService = binding.serviceRv
-        rvService.setHasFixedSize(true)
-
-        list.addAll(getListService())
-        showRecyclerList()
-
-    }
-
-    private fun getListService(): ArrayList<Service> {
-        val dataName = resources.getStringArray(R.array.data_name)
-        val dataDescription = resources.getStringArray(R.array.data_description)
-        val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
-        val listService = ArrayList<Service>()
-        for (i in dataName.indices) {
-            val service = Service(dataName[i], dataDescription[i], dataPhoto.getResourceId(i, -1))
-            listService.add(service)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        binding.root.addOnLayoutChangeListener { view, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+            val navController = findNavController(R.id.fragmentContainerView3)
+            bottomNavigationView.setupWithNavController(navController)
         }
-        return listService
-    }
-
-    private fun showRecyclerList() {
-        rvService.layoutManager = LinearLayoutManager(this)
-        val listServiceAdapter = ListServiceAdapter(list)
-        rvService.adapter = listServiceAdapter
-
-        listServiceAdapter.setOnItemClickCallback(object : ListServiceAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Service) {
-                showSelectedService(data)
-            }
-        })
-    }
-
-    private fun showSelectedService(service: Service) {
-        Toast.makeText(this, "Kamu memilih " + service.name, Toast.LENGTH_SHORT).show()
     }
 }
