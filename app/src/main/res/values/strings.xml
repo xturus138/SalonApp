@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Comfest SEA 16</string>
+    <string name="customer_service">Customer Service</string>
+    <string name="customer_hello">Hi, Raditya</string>
+    <string name="our_service">Our Service</string>
+    <string name="title">Welcome to SEA SALON!</string>
+    <string name="description">Beauty and Elegance Redefined</string>
 </resources>
