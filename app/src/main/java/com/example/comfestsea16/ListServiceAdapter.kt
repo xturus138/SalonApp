@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.comfestsea16.databinding.ActivityMainBinding
+import com.example.comfestsea16.databinding.ItemRowServiceBinding
 
 class ListServiceAdapter (private val listService: ArrayList<Service>) : RecyclerView.Adapter<ListServiceAdapter.ListViewHolder>()  {
     private lateinit var onItemClickCallback: OnItemClickCallback
@@ -16,26 +17,24 @@ class ListServiceAdapter (private val listService: ArrayList<Service>) : Recycle
     }
 
 
-    class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
-        val tvName: TextView = itemView.findViewById(R.id.tv_item_name)
-        val tvDescription: TextView = itemView.findViewById(R.id.tv_item_description)
-    }
+    class ListViewHolder(var binding: ItemRowServiceBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_service, parent, false)
-
-        return ListViewHolder(view)
+        val binding = ItemRowServiceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ListViewHolder(binding)
     }
+
 
     override fun getItemCount(): Int = listService.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val (name, description, photo) = listService[position]
-        holder.imgPhoto.setImageResource(photo)
-        holder.tvName.text = name
-        holder.tvDescription.text = description
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listService[holder.adapterPosition]) }
+        holder.binding.imgItemPhoto.setImageResource(photo)
+        holder.binding.tvItemName.text = name
+        holder.binding.tvItemDescription.text = description
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(listService[holder.adapterPosition])
+        }
     }
 
     interface OnItemClickCallback {
