@@ -5,16 +5,19 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.comfestsea16.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var rvService: RecyclerView
+    private lateinit var binding: ActivityMainBinding
     private val list = ArrayList<Service>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        rvService = findViewById(R.id.service_rv)
+        rvService = binding.serviceRv
         rvService.setHasFixedSize(true)
 
         list.addAll(getListService())
