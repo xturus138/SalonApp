@@ -1,11 +1,10 @@
-package com.example.comfestsea16
+package com.example.comfestsea16.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.comfestsea16.R
 import com.example.comfestsea16.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

@@ -8,6 +8,16 @@
 
     <string name="title_service">Title</string>
     <string name="description_service">Deskripsi</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back_button">back button</string>
+    <string name="customer_support">CUSTOMER SUPPORT</string>
+    <string name="contact_icon">Contact Icon</string>
+    <string name="sekar">Sekar</string>
+    <string name="phone_sekar">(08164829372)</string>
+    <string name="contact_icon_description">Contact Icon</string>
+    <string name="thomas">Thomas</string>
+    <string name="phone_thomas">(08123456789)</string>
+    <string name="contact_details_title">Contact Details</string>
 
     <string-array name="data_name">
         <item>Haircut &amp; Styling</item>
@@ -26,6 +36,5 @@
         <item>@drawable/washing</item>
         <item>@drawable/beardshaving</item>
     </integer-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

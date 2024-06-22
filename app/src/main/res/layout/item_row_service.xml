@@ -23,10 +23,12 @@
             android:layout_width="66dp"
             android:layout_height="75dp"
             android:layout_marginStart="10dp"
+            android:contentDescription="@string/title_service"
             android:scaleType="centerCrop"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck"
             tools:src="@tools:sample/avatars" />
 
         <TextView

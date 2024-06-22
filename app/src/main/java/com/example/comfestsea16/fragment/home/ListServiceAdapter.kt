@@ -1,10 +1,9 @@
-package com.example.comfestsea16
+package com.example.comfestsea16.fragment.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.comfestsea16.databinding.ItemRowServiceBinding
-import com.example.comfestsea16.databinding.FragmentFirstBinding
 
 class ListServiceAdapter (private val listService: ArrayList<Service>) : RecyclerView.Adapter<ListServiceAdapter.ListViewHolder>()  {
     private lateinit var onItemClickCallback: OnItemClickCallback

@@ -1,5 +1,6 @@
-package com.example.comfestsea16
+package com.example.comfestsea16.fragment.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +9,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.comfestsea16.CustomerSupportActivity
+import com.example.comfestsea16.R
+import com.example.comfestsea16.databinding.CardHomeLayoutBinding
 import com.example.comfestsea16.databinding.FragmentFirstBinding
 
 class FirstFragment : Fragment() {
     private lateinit var rvService: RecyclerView
     private lateinit var binding: FragmentFirstBinding
+    private lateinit var cardHomeBinding: CardHomeLayoutBinding
     private val list = ArrayList<Service>()
 
     override fun onCreateView(
@@ -25,12 +30,31 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initializeViews()
+        initializeData()
+        setupRecyclerView()
+        clickCustomerServiceButton()
+    }
 
+    private fun initializeViews() {
         rvService = binding.serviceRv
         rvService.setHasFixedSize(true)
+        cardHomeBinding = CardHomeLayoutBinding.bind(binding.cardView.root)
+    }
 
+    private fun initializeData() {
         list.addAll(getListService())
-        showRecyclerList()
+    }
+
+    private fun setupRecyclerView() {
+        rvService.layoutManager = LinearLayoutManager(requireContext())
+        val listServiceAdapter = ListServiceAdapter(list)
+        rvService.adapter = listServiceAdapter
+        listServiceAdapter.setOnItemClickCallback(object : ListServiceAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Service) {
+                showSelectedService(data)
+            }
+        })
     }
 
     private fun getListService(): ArrayList<Service> {
@@ -45,19 +69,20 @@ class FirstFragment : Fragment() {
         return listService
     }
 
-    private fun showRecyclerList() {
-        rvService.layoutManager = LinearLayoutManager(requireContext())
-        val listServiceAdapter = ListServiceAdapter(list)
-        rvService.adapter = listServiceAdapter
-
-        listServiceAdapter.setOnItemClickCallback(object : ListServiceAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Service) {
-                showSelectedService(data)
-            }
-        })
+    private fun showSelectedService(service: Service) {
+        Toast.makeText(requireContext(), "Kamu memilih ${service.name}", Toast.LENGTH_SHORT).show()
     }
 
-    private fun showSelectedService(service: Service) {
-        Toast.makeText(requireContext(), "Kamu memilih " + service.name, Toast.LENGTH_SHORT).show()
+    private fun clickCustomerServiceButton() {
+        val customerServiceButton = cardHomeBinding.customerServiceButton
+        customerServiceButton.setOnClickListener {
+            navigateToCustomerSupport()
+        }
+    }
+
+    private fun navigateToCustomerSupport() {
+        val intent =
+            Intent(this@FirstFragment.requireContext(), CustomerSupportActivity::class.java)
+        startActivity(intent)
     }
 }
