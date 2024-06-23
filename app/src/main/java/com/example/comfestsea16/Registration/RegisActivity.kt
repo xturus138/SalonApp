@@ -1,12 +1,12 @@
-package com.example.comfestsea16.Activity
+package com.example.comfestsea16.Registration
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.comfestsea16.R
 
-public open class BaseActivity : AppCompatActivity() {
+class RegisActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_base)
+        setContentView(R.layout.activity_regis)
     }
 }
