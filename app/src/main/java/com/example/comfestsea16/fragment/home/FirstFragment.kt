@@ -9,10 +9,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.comfestsea16.CustomerSupportActivity
+import com.example.comfestsea16.support.CustomerSupportActivity
 import com.example.comfestsea16.R
 import com.example.comfestsea16.databinding.CardHomeLayoutBinding
 import com.example.comfestsea16.databinding.FragmentFirstBinding
+import com.example.comfestsea16.form.FormActivity
 
 class FirstFragment : Fragment() {
     private lateinit var rvService: RecyclerView
@@ -23,7 +24,7 @@ class FirstFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -43,6 +44,7 @@ class FirstFragment : Fragment() {
     }
 
     private fun initializeData() {
+        list.clear()
         list.addAll(getListService())
     }
 
@@ -53,6 +55,7 @@ class FirstFragment : Fragment() {
         listServiceAdapter.setOnItemClickCallback(object : ListServiceAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Service) {
                 showSelectedService(data)
+                navigateItems()
             }
         })
     }
@@ -66,11 +69,18 @@ class FirstFragment : Fragment() {
             val service = Service(dataName[i], dataDescription[i], dataPhoto.getResourceId(i, -1))
             listService.add(service)
         }
+        dataPhoto.recycle()
         return listService
     }
 
     private fun showSelectedService(service: Service) {
         Toast.makeText(requireContext(), "Kamu memilih ${service.name}", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun navigateItems(){
+        val intent=
+            Intent(this@FirstFragment.requireContext(), FormActivity::class.java)
+        startActivity(intent)
     }
 
     private fun clickCustomerServiceButton() {

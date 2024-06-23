@@ -18,6 +18,27 @@
     <string name="thomas">Thomas</string>
     <string name="phone_thomas">(08123456789)</string>
     <string name="contact_details_title">Contact Details</string>
+    <string name="appointment_date">Appointment Date:</string>
+    <string name="available_slots">Available Slots:</string>
+    <string name="enter_your_full_name">Enter your full name</string>
+    <string name="full_name">Full Name:</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="phone_number">Phone Number:</string>
+    <string name="type_of_service">Type of Service:</string>
+    <string name="_10_00_11_00">10:00 - 11:00</string>
+    <string name="_11_00_12_00">11:00 - 12:00</string>
+    <string name="_12_00_13_00">12:00 - 13:00</string>
+    <string name="_13_00_14_00">13:00 - 14:00</string>
+    <string name="_14_00_15_00">14:00 - 15:00</string>
+    <string name="_15_00_16_00">15:00 - 16:00</string>
+    <string name="_16_00_17_00">16:00 - 17:00</string>
+    <string name="_17_00_18_00">17:00 - 18:00</string>
+    <string name="_18_00_19_00">18:00 - 19:00</string>
+    <string name="_19_00_20_00">19:00 - 20:00</string>
+    <string name="_20_00_21_00">20:00 - 21:00</string>
+    <string name="_9_00_10_00">9:00 - 10:00</string>
+    <string name="submit_button_form">Submit</string>
+    <string name="reservation_form">RESERVATION FORM</string>
 
     <string-array name="data_name">
         <item>Haircut &amp; Styling</item>
@@ -36,5 +57,20 @@
         <item>@drawable/washing</item>
         <item>@drawable/beardshaving</item>
     </integer-array>
+
+    <string-array name="time_options">
+        <item>9:00 - 10:00</item>
+        <item>10:00 - 11:00</item>
+        <item>11:00 - 12:00</item>
+        <item>12:00 - 13:00</item>
+        <item>13:00 - 14:00</item>
+        <item>14:00 - 15:00</item>
+        <item>15:00 - 16:00</item>
+        <item>16:00 - 17:00</item>
+        <item>17:00 - 18:00</item>
+        <item>18:00 - 19:00</item>
+        <item>19:00 - 20:00</item>
+        <item>20:00 - 21:00</item>
+    </string-array>
 
 </resources>
