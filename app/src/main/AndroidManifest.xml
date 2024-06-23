@@ -12,8 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComfestSEA16"
         tools:targetApi="31">
+        <activity android:name=".Main.MainActivity"/>
         <activity
-            android:name=".main.MainActivity"
+            android:name=".Activity.BaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.SplashScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,8 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".support.CustomerSupportActivity"></activity>
-        <activity android:name=".form.FormActivity"></activity>
+        <activity
+            android:name=".Fragment.Support.CustomerSupportActivity" />
+        <activity
+            android:name=".Fragment.Form.FormActivity" />
     </application>
 
 </manifest>

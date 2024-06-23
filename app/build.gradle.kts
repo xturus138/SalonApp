@@ -53,5 +53,7 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
     implementation ("androidx.navigation:navigation-fragment-ktx:2.4.0")
     implementation ("androidx.navigation:navigation-ui-ktx:2.4.0")
+    implementation ("com.google.code.gson:gson:2.9.1")
+    implementation ("com.google.firebase:firebase-auth:22.3.0")
 
 }

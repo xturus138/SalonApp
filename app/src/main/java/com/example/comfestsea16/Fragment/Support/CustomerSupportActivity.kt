@@ -1,10 +1,10 @@
-package com.example.comfestsea16.support
+package com.example.comfestsea16.Fragment.Support
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.comfestsea16.databinding.CustomerSupportBinding
-import com.example.comfestsea16.main.MainActivity
+import com.example.comfestsea16.Main.MainActivity
 
 class CustomerSupportActivity : AppCompatActivity() {
     private lateinit var binding: CustomerSupportBinding

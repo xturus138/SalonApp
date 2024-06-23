@@ -1,4 +1,4 @@
-package com.example.comfestsea16.fragment.home
+package com.example.comfestsea16.Fragment.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,11 +9,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.comfestsea16.support.CustomerSupportActivity
+import com.example.comfestsea16.Fragment.Support.CustomerSupportActivity
 import com.example.comfestsea16.R
 import com.example.comfestsea16.databinding.CardHomeLayoutBinding
 import com.example.comfestsea16.databinding.FragmentFirstBinding
-import com.example.comfestsea16.form.FormActivity
+import com.example.comfestsea16.Fragment.Form.FormActivity
 
 class FirstFragment : Fragment() {
     private lateinit var rvService: RecyclerView

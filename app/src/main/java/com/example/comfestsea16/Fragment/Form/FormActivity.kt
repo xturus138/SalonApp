@@ -1,19 +1,17 @@
-package com.example.comfestsea16.form
+package com.example.comfestsea16.Fragment.Form
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.comfestsea16.databinding.FormLayoutBinding
-import com.example.comfestsea16.fragment.booking.SecondFragment
-import com.example.comfestsea16.main.MainActivity
+import com.example.comfestsea16.databinding.ActivityFormBinding
+import com.example.comfestsea16.Main.MainActivity
 
 class FormActivity : AppCompatActivity() {
-    private lateinit var binding: FormLayoutBinding
+    private lateinit var binding: ActivityFormBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = FormLayoutBinding.inflate(layoutInflater)
+        binding = ActivityFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
         navigateBackButton()
         submitButton()

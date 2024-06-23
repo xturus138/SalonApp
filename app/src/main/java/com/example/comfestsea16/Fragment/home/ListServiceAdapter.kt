@@ -1,4 +1,4 @@
-package com.example.comfestsea16.fragment.home
+package com.example.comfestsea16.Fragment.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
