@@ -7,8 +7,12 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.comfestsea16.R
 import com.example.comfestsea16.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
+    private lateinit var user: FirebaseUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,5 +23,9 @@ class MainActivity : AppCompatActivity() {
             val navController = findNavController(R.id.fragmentContainerView3)
             bottomNavigationView.setupWithNavController(navController)
         }
+
+        auth = FirebaseAuth.getInstance()
+        user = auth.currentUser!!
+
     }
 }

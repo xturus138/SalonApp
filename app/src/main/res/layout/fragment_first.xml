@@ -27,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@color/white"
             android:padding="8dp">
 
             <TextView
@@ -34,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:textColor="@color/black"
                 android:gravity="center"
                 android:text="@string/title"
                 android:textSize="25sp"
@@ -44,6 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:textColor="@color/black"
                 android:gravity="center"
                 android:text="@string/description"
                 android:textSize="15sp" />
@@ -66,6 +69,16 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:visibility="visible" />
+
+            <Button
+                android:id="@+id/logoutSementara"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:text="Logout Sementara" />
+
         </LinearLayout>
     </ScrollView>
 

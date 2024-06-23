@@ -6,8 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
-import com.example.comfestsea16.Login.LoginActivity
-import com.example.comfestsea16.Main.MainActivity
+import com.example.comfestsea16.Authentication.Login.LoginActivity
 import com.example.comfestsea16.R
 
 @Suppress("DEPRECATION")

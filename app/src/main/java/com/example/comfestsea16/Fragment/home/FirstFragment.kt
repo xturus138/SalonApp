@@ -9,16 +9,22 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.comfestsea16.Authentication.Login.LoginActivity
 import com.example.comfestsea16.Fragment.Support.CustomerSupportActivity
 import com.example.comfestsea16.R
 import com.example.comfestsea16.databinding.CardHomeLayoutBinding
 import com.example.comfestsea16.databinding.FragmentFirstBinding
 import com.example.comfestsea16.Fragment.Form.FormActivity
+import com.example.comfestsea16.Main.MainActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class FirstFragment : Fragment() {
     private lateinit var rvService: RecyclerView
     private lateinit var binding: FragmentFirstBinding
     private lateinit var cardHomeBinding: CardHomeLayoutBinding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var user: FirebaseUser
     private val list = ArrayList<Service>()
 
     override fun onCreateView(
@@ -29,12 +35,26 @@ class FirstFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeViews()
         initializeData()
         setupRecyclerView()
         clickCustomerServiceButton()
+        auth = FirebaseAuth.getInstance()
+        user = auth.currentUser!!
+        var userText = cardHomeBinding.userName
+        var logoutButton = binding.logoutSementara
+
+        userText.setText(user.email)
+        logoutButton.setOnClickListener(){
+            FirebaseAuth.getInstance().signOut()
+            val intent=
+                Intent(this@FirstFragment.requireContext(), LoginActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun initializeViews() {

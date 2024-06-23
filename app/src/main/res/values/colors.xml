@@ -9,4 +9,5 @@
 
     <color name="my_primary">#5E35B1</color>
     <color name="my_secondary">#673AB7</color>
+    <color name="login_text_color">#333333</color>
 </resources>

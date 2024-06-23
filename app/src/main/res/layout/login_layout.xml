@@ -9,15 +9,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/my_primary"
-        android:alpha="0.7"/>
+        android:alpha="0.7"
+        android:background="@color/my_primary" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_above="@id/card_view"
+        android:gravity="center"
+        android:orientation="vertical"
         android:padding="28dp">
 
         <ImageView
@@ -33,73 +33,81 @@
             android:textColor="@color/white"
             android:textSize="32sp"
             android:textStyle="bold" />
-
-
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:cardCornerRadius="28dp"
         android:layout_marginBottom="-20dp"
-        android:id="@+id/card_view"
-        >
+        app:cardCornerRadius="28dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginBottom="30dp"
+            android:background="@color/white"
+            android:orientation="vertical"
             android:padding="28dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Welcome"
                 android:textColor="@color/my_primary"
                 android:textSize="32sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:alpha="0.7"
                 android:text="Please login with your information"
-                android:alpha="0.7"/>
+                android:textColor="@color/login_text_color" />
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"/>
+                android:layout_height="30dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email Address"
                 android:alpha="0.7"
-                android:textStyle="bold"/>
+                android:text="Email Address"
+                android:textColor="@color/login_text_color"
+                android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/emailLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/done_icon"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
+                android:textColor="@color/login_text_color"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password"
                 android:alpha="0.7"
-                android:textStyle="bold"/>
+                android:text="Password"
+                android:textColor="@color/login_text_color"
+                android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/passwordLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/password_icon"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
+                android:textColor="@color/login_text_color"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <RelativeLayout
@@ -109,48 +117,53 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Remember me"
                     android:layout_centerVertical="true"
-                    android:alpha="0.7"/>
+                    android:alpha="0.7"
+                    android:text="Remember me"
+                    android:textColor="@color/login_text_color" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="I forgot my password"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
-
+                    android:layout_centerVertical="true"
+                    android:text="I forgot my password"
+                    android:textColor="@color/login_text_color" />
             </RelativeLayout>
+
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="10dp"/>
+                android:layout_height="10dp" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:backgroundTint="@color/my_primary"
                 android:text="Login"
-                app:cornerRadius="32dp"/>
+                android:textColor="@color/white"
+                app:cornerRadius="32dp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:visibility="gone" />
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="10dp"/>
+                android:layout_height="10dp" />
+
             <TextView
+                android:id="@+id/regisButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Register Here!"
                 android:layout_gravity="center"
-                android:alpha="0.7"/>
+                android:alpha="0.7"
+                android:text="Register Here!"
+                android:textColor="@color/login_text_color" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
