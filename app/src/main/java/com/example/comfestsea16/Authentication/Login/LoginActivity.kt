@@ -12,7 +12,6 @@ import com.example.comfestsea16.Main.MainActivity
 import com.example.comfestsea16.R
 import com.example.comfestsea16.databinding.ActivityLoginBinding
 import com.example.comfestsea16.databinding.ActivityRegisterBinding
-import com.example.comfestsea16.databinding.LoginLayoutBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
@@ -77,6 +76,7 @@ class LoginActivity : AppCompatActivity() {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.exception)
+                            progressBar.visibility = View.GONE
                             Toast.makeText(
                                 baseContext,
                                 "Authentication failed.",
