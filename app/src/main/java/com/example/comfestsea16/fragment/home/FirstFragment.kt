@@ -1,7 +1,9 @@
-package com.example.comfestsea16.Fragment.home
+package com.example.comfestsea16.fragment.home
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +11,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.comfestsea16.Authentication.Login.LoginActivity
-import com.example.comfestsea16.Fragment.Support.CustomerSupportActivity
 import com.example.comfestsea16.R
+import com.example.comfestsea16.authentication.login.LoginActivity
 import com.example.comfestsea16.databinding.CardHomeLayoutBinding
 import com.example.comfestsea16.databinding.FragmentFirstBinding
-import com.example.comfestsea16.Fragment.Form.FormActivity
-import com.example.comfestsea16.Main.MainActivity
+import com.example.comfestsea16.fragment.form.FormActivity
+import com.example.comfestsea16.fragment.support.CustomerSupportActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
 
 class FirstFragment : Fragment() {
     private lateinit var rvService: RecyclerView
@@ -42,12 +44,26 @@ class FirstFragment : Fragment() {
         initializeData()
         setupRecyclerView()
         clickCustomerServiceButton()
+
         auth = FirebaseAuth.getInstance()
         user = auth.currentUser!!
-        var userText = cardHomeBinding.userName
-        var logoutButton = binding.logoutSementara
+        val userText = cardHomeBinding.userName
+        val db = FirebaseFirestore.getInstance()
+        db.collection("user").document(user.uid).get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val userName = document.getString("name")
+                    val finalUserName = "Hi, ${userName ?: user.email}"
+                    userText.text = finalUserName // Use name if available, else fallback to email
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
 
-        userText.setText(user.email)
+        val logoutButton = binding.logoutSementara
         logoutButton.setOnClickListener(){
             FirebaseAuth.getInstance().signOut()
             val intent=
@@ -56,6 +72,8 @@ class FirstFragment : Fragment() {
         }
 
     }
+
+
 
     private fun initializeViews() {
         rvService = binding.serviceRv

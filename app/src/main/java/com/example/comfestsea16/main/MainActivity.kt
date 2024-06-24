@@ -1,4 +1,4 @@
-package com.example.comfestsea16.Main
+package com.example.comfestsea16.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -1,11 +1,11 @@
-package com.example.comfestsea16.Fragment.Form
+package com.example.comfestsea16.fragment.form
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.comfestsea16.databinding.ActivityFormBinding
-import com.example.comfestsea16.Main.MainActivity
+import com.example.comfestsea16.main.MainActivity
 
 class FormActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFormBinding

@@ -1,4 +1,4 @@
-package com.example.comfestsea16.Activity
+package com.example.comfestsea16.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
-import com.example.comfestsea16.Authentication.Login.LoginActivity
+import com.example.comfestsea16.authentication.login.LoginActivity
 import com.example.comfestsea16.R
 
 @Suppress("DEPRECATION")

@@ -14,15 +14,15 @@
         android:theme="@style/Theme.ComfestSEA16"
         tools:targetApi="31">
         <activity
-            android:name=".Authentication.Register.RegisterActivity"
+            android:name=".authentication.register.RegisterActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Authentication.Login.LoginActivity"
+            android:name=".authentication.login.LoginActivity"
             android:exported="false" />
-        <activity android:name=".Main.MainActivity" />
+        <activity android:name=".main.MainActivity" />
         <activity
-            android:name=".Activity.SplashScreen"
+            android:name=".activity.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -31,8 +31,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Fragment.Support.CustomerSupportActivity" />
-        <activity android:name=".Fragment.Form.FormActivity" />
+        <activity android:name=".fragment.support.CustomerSupportActivity" />
+        <activity android:name=".fragment.form.FormActivity" />
 
     </application>
 
