@@ -39,6 +39,16 @@
     <string name="_9_00_10_00">9:00 - 10:00</string>
     <string name="submit_button_form">Submit</string>
     <string name="reservation_form">RESERVATION FORM</string>
+    <string name="appointment">APPOINTMENT</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="history">History</string>
+    <string name="rate_this_service">Rate this service</string>
+    <string name="services_details">Services Details</string>
+    <string name="date_and_time">Date and Time</string>
+    <string name="review_system">Review System</string>
+    <string name="nama_anda">Nama Anda</string>
+    <string name="tulis_ulasan_anda">Tulis ulasan Anda</string>
+    <string name="service_type">Service Type</string>
 
     <string-array name="data_name">
         <item>Haircut &amp; Styling</item>
@@ -59,18 +69,18 @@
     </integer-array>
 
     <string-array name="time_options">
-        <item>9:00 - 10:00</item>
-        <item>10:00 - 11:00</item>
-        <item>11:00 - 12:00</item>
-        <item>12:00 - 13:00</item>
-        <item>13:00 - 14:00</item>
-        <item>14:00 - 15:00</item>
-        <item>15:00 - 16:00</item>
-        <item>16:00 - 17:00</item>
-        <item>17:00 - 18:00</item>
-        <item>18:00 - 19:00</item>
-        <item>19:00 - 20:00</item>
-        <item>20:00 - 21:00</item>
+        <item>9:00 – 10:00</item>
+        <item>10:00 – 11:00</item>
+        <item>11:00 – 12:00</item>
+        <item>12:00 – 13:00</item>
+        <item>13:00 – 14:00</item>
+        <item>14:00 – 15:00</item>
+        <item>15:00 – 16:00</item>
+        <item>16:00 – 17:00</item>
+        <item>17:00 – 18:00</item>
+        <item>18:00 – 19:00</item>
+        <item>19:00 – 20:00</item>
+        <item>20:00 – 21:00</item>
     </string-array>
 
 </resources>

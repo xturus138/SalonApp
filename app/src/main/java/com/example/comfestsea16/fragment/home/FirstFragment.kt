@@ -119,6 +119,7 @@ class FirstFragment : Fragment() {
         val intent=
             Intent(this@FirstFragment.requireContext(), FormActivity::class.java)
         startActivity(intent)
+        requireActivity().finish()
     }
 
     private fun clickCustomerServiceButton() {
@@ -132,5 +133,6 @@ class FirstFragment : Fragment() {
         val intent =
             Intent(this@FirstFragment.requireContext(), CustomerSupportActivity::class.java)
         startActivity(intent)
+        requireActivity().finish()
     }
 }

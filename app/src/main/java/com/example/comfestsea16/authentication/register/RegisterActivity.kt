@@ -74,7 +74,7 @@ class RegisterActivity : AppCompatActivity() {
                     if (user != null) {
                         // Registration successful
                         val userId = user.uid // Capture the uid of the newly created user
-                        saveUserDataToFirestore(userId, fullNameText, emailText, phoneNumberText)
+                        saveUserDataToFirestore(userId, fullNameText, phoneNumberText)
 
                         Log.d(TAG, "createUserWithEmail:success")
                         Toast.makeText(baseContext, "Account Created.", Toast.LENGTH_SHORT).show()
@@ -110,11 +110,10 @@ class RegisterActivity : AppCompatActivity() {
         })
     }
 
-    private fun saveUserDataToFirestore(userId: String, fullName: String, email: String, phoneNumber: String) {
+    private fun saveUserDataToFirestore(userId: String, fullName: String, phoneNumber: String) {
         val db = FirebaseFirestore.getInstance()
         val userMap = hashMapOf(
             "name" to fullName,
-            "email" to email,
             "number" to phoneNumber
         )
 
