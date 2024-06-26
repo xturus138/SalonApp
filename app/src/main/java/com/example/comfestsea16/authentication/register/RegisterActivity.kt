@@ -48,7 +48,14 @@ class RegisterActivity : AppCompatActivity() {
         val phoneNumber = binding.phoneNumber
         val password = binding.password
         val regisButton = binding.registerButton
+        val backButton = binding.backButtonRegis
         val progressBar = binding.progressBar
+
+        backButton.setOnClickListener(){
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         regisButton.setOnClickListener {
             Log.d(TAG, "onCreate: REGISTER BUTTON CLICKED!!!!!")

@@ -6,6 +6,9 @@
     <color name="background_color">#281455</color>
     <color name="primary_text_color">#fb7f7f</color>
     <color name="background_color2">#f8f4f4</color>
+    <color name="background_item1">#00FFCB</color>
+    <color name="background_item2">#B003FA</color>
+
 
     <color name="my_primary">#5E35B1</color>
     <color name="my_secondary">#673AB7</color>

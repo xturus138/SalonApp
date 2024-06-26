@@ -49,6 +49,8 @@
     <string name="nama_anda">Nama Anda</string>
     <string name="tulis_ulasan_anda">Tulis ulasan Anda</string>
     <string name="service_type">Service Type</string>
+    <string name="review_service">REVIEW SERVICE</string>
+    <string name="submit">Submit</string>
 
     <string-array name="data_name">
         <item>Haircut &amp; Styling</item>
