@@ -1,17 +1,13 @@
-package com.example.comfestsea16.fragment.home
+package com.example.comfestsea16.activity
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.comfestsea16.databinding.ItemRowServiceBinding
+import com.example.comfestsea16.fragment.home.Service
 
-class ListServiceAdapter (private val listService: ArrayList<Service>) : RecyclerView.Adapter<ListServiceAdapter.ListViewHolder>()  {
-    private lateinit var onItemClickCallback: OnItemClickCallback
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
-
+class ListServiceAdmin(private val listService: ArrayList<Service>) : RecyclerView.Adapter<ListServiceAdmin.ListViewHolder>() {
 
     class ListViewHolder(var binding: ItemRowServiceBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -28,19 +24,12 @@ class ListServiceAdapter (private val listService: ArrayList<Service>) : Recycle
         holder.binding.tvItemName.text = service.name
         holder.binding.tvItemDescription.text = service.description
 
-        // Load image using Glide (you'll need to add the Glide dependency)
+        // Load image using Glide
         Glide.with(holder.itemView.context)
             .load(service.imageUrl)
             .into(holder.binding.imgItemPhoto)
-        holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(listService[holder.adapterPosition])
-        }
+
+        // Remove the click listener (or make it a no-op)
+        holder.itemView.setOnClickListener(null) // Or use an empty lambda: {}
     }
-
-    interface OnItemClickCallback {
-        fun onItemClicked(data: Service)
-    }
-
-
-
 }

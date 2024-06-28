@@ -1,4 +1,3 @@
-// LoginActivity.kt
 package com.example.comfestsea16.authentication.login
 
 import android.content.ContentValues.TAG
@@ -10,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.example.comfestsea16.activity.AdminActivity
 import com.example.comfestsea16.authentication.register.RegisterActivity
 import com.example.comfestsea16.databinding.ActivityLoginBinding
 import com.example.comfestsea16.main.MainActivity
@@ -17,20 +17,6 @@ import com.example.comfestsea16.main.MainActivity
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val loginViewModel: LoginViewModel by viewModels()
-
-    public override fun onStart() {
-        super.onStart()
-
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = loginViewModel.getCurrentUser()
-        if (currentUser != null) {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,8 +53,13 @@ class LoginActivity : AppCompatActivity() {
             if (user != null) {
                 Log.d(TAG, "signInWithEmail:success")
                 Toast.makeText(baseContext, "Login Success.", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                if (email.text.toString() == "thomas.n@compfest.id" && password.text.toString() == "Admin123") {
+                    val intent = Intent(this, AdminActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
                 finish()
             } else {
                 Log.w(TAG, "signInWithEmail:failure")

@@ -5,7 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Service(
-    val name: String,
-    val description: String,
-    val photo: Int
+    var id: String? = null, // Allow null for the id since it's assigned later
+    val name: String? = null, // Allow null for these fields initially
+    val description: String? = null,
+    val imageUrl: String? = null
 ) : Parcelable

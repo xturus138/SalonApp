@@ -1,5 +1,6 @@
 package com.example.comfestsea16.fragment.home
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -7,11 +8,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.comfestsea16.R
 import com.example.comfestsea16.authentication.login.LoginActivity
 import com.example.comfestsea16.databinding.CardHomeLayoutBinding
 import com.example.comfestsea16.databinding.FragmentFirstBinding
@@ -26,6 +27,7 @@ class FirstFragment : Fragment() {
     private lateinit var binding: FragmentFirstBinding
     private lateinit var cardHomeBinding: CardHomeLayoutBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var progressBar: ProgressBar
     private lateinit var user: FirebaseUser
     private val list = ArrayList<Service>()
 
@@ -34,6 +36,7 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFirstBinding.inflate(inflater, container, false)
+        progressBar = binding.progressBar
         return binding.root
     }
 
@@ -81,11 +84,6 @@ class FirstFragment : Fragment() {
         cardHomeBinding = CardHomeLayoutBinding.bind(binding.cardView.root)
     }
 
-    private fun initializeData() {
-        list.clear()
-        list.addAll(getListService())
-    }
-
     private fun setupRecyclerView() {
         rvService.layoutManager = LinearLayoutManager(requireContext())
         val listServiceAdapter = ListServiceAdapter(list)
@@ -98,18 +96,30 @@ class FirstFragment : Fragment() {
         })
     }
 
-    private fun getListService(): ArrayList<Service> {
-        val dataName = resources.getStringArray(R.array.data_name)
-        val dataDescription = resources.getStringArray(R.array.data_description)
-        val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
-        val listService = ArrayList<Service>()
-        for (i in dataName.indices) {
-            val service = Service(dataName[i], dataDescription[i], dataPhoto.getResourceId(i, -1))
-            listService.add(service)
-        }
-        dataPhoto.recycle()
-        return listService
+    @SuppressLint("NotifyDataSetChanged")
+    private fun initializeData() {
+        list.clear()
+        progressBar.visibility = View.VISIBLE
+
+        val db = FirebaseFirestore.getInstance()
+        db.collection("services").get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val service = document.toObject(Service::class.java)
+                    service.id = document.id // Set the document ID in the data object
+                    list.add(service)
+                    rvService.adapter?.notifyDataSetChanged()
+                    progressBar.visibility = View.GONE
+                }
+                rvService.adapter?.notifyDataSetChanged()
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+                // Handle error, e.g., show a message to the user
+                progressBar.visibility = View.GONE
+            }
     }
+
 
     private fun showSelectedService(service: Service) {
         Toast.makeText(requireContext(), "Kamu memilih ${service.name}", Toast.LENGTH_SHORT).show()
