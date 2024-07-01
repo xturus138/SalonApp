@@ -14,13 +14,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.comfestsea16.R
+import com.example.comfestsea16.databinding.FragmentSecondBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.launch
 
 class SecondFragment : Fragment() {
-
+    private lateinit var binding: FragmentSecondBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: BookingAdapter
     private lateinit var allBookings: List<Booking>
@@ -30,7 +31,8 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_second, container, false)
+        binding = FragmentSecondBinding.inflate(inflater, container, false)
+        val view = binding.root
 
         recyclerView = view.findViewById(R.id.recyclerView)
         adapter = BookingAdapter(mutableListOf())
@@ -39,6 +41,9 @@ class SecondFragment : Fragment() {
 
         val db = FirebaseFirestore.getInstance()
         val userId = getCurrentUserId()
+        val progress = binding.progressBar
+
+        progress.visibility = View.VISIBLE
 
         db.collection("user").document(userId).collection("bookings")
             .get()
@@ -46,7 +51,9 @@ class SecondFragment : Fragment() {
                 allBookings = documents.toObjects(Booking::class.java)
                 viewLifecycleOwner.lifecycleScope.launch {
                     adapter.updateBookings(allBookings)
+                    filterBookings(true)
                 }
+                progress.visibility = View.GONE
             }
             .addOnFailureListener { exception ->
                 Log.e(TAG, "Error getting bookings", exception)
@@ -64,13 +71,13 @@ class SecondFragment : Fragment() {
             filterBookings(false)
             updateButtonColors(historyButton, upcomingButton)
         }
-
+        updateButtonColors(upcomingButton, historyButton)
         return view
     }
 
     private fun filterBookings(showUpcoming: Boolean) {
         val filteredBookings = if (showUpcoming) {
-            allBookings
+            allBookings.filter { it.status == "pending" }
         } else {
             allBookings
         }

@@ -8,5 +8,6 @@ data class Service(
     var id: String? = null, // Allow null for the id since it's assigned later
     val name: String? = null, // Allow null for these fields initially
     val description: String? = null,
-    val imageUrl: String? = null
+    val imageUrl: String? = null,
+    val sessionDuration: Int? = null
 ) : Parcelable

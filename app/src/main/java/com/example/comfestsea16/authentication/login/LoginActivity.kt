@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.example.comfestsea16.activity.AdminActivity
+import com.example.comfestsea16.activity.admin.AdminActivity
 import com.example.comfestsea16.authentication.register.RegisterActivity
 import com.example.comfestsea16.databinding.ActivityLoginBinding
 import com.example.comfestsea16.main.MainActivity

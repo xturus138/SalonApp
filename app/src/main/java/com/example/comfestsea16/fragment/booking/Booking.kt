@@ -4,5 +4,6 @@ data class Booking(
     val number: String = "",
     val service: String = "",
     val time: String = "",
-    val date: String = ""
+    val date: String = "",
+    var status: String = ""
 )

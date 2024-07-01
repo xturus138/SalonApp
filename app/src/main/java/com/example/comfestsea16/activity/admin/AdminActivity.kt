@@ -1,4 +1,4 @@
-package com.example.comfestsea16.activity
+package com.example.comfestsea16.activity.admin
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -36,37 +36,44 @@ class AdminActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.nextButton.setOnClickListener(){
+            val intent =
+                Intent(this, AccAdmin::class.java)
+            startActivity(intent)
+            finish()
+        }
+
 
         binding.addServiceButton.setOnClickListener {
             val name = binding.serviceNameInput.text.toString().trim()
-            val description = binding.descriptionInput.text.toString().trim() // You might want to change the input type to "text" in your XML
+            val description = binding.descriptionInput.text.toString().trim()
+            val durationString = binding.sessionDurationInput.text.toString().trim()
+            val duration = if (durationString.isNotEmpty()) durationString.toIntOrNull() else null
 
-            if (name.isNotEmpty() && description.isNotEmpty()) {
+            if (name.isNotEmpty() && description.isNotEmpty() && duration != null) {
                 val newService = hashMapOf(
                     "name" to name,
-                    "description" to description
-                    // Add "imageUrl" field when you have that feature
+                    "description" to description,
+                    "sessionDuration" to duration
                 )
 
                 db.collection("services")
                     .add(newService)
                     .addOnSuccessListener { documentReference ->
-                        // Add the new service to the list and update the adapter
-                        list.add(Service(documentReference.id, name, description, null))
-                        listServiceAdapter.notifyItemInserted(list.size - 1)
+                        list.add(Service(documentReference.id, name, description, null, duration))
+                        binding.serviceList.adapter?.notifyItemInserted(list.size - 1)
 
-                        // Clear input fields
                         binding.serviceNameInput.text.clear()
                         binding.descriptionInput.text.clear()
+                        binding.sessionDurationInput.text.clear()
 
                         Toast.makeText(this, "Service added successfully!", Toast.LENGTH_SHORT).show()
                     }
                     .addOnFailureListener { exception ->
-                        // Handle errors
                         Toast.makeText(this, "Error adding service: ${exception.message}", Toast.LENGTH_SHORT).show()
                     }
             } else {
-                Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please fill in all fields correctly.", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -82,15 +89,15 @@ class AdminActivity : AppCompatActivity() {
                         document.id,
                         document.getString("name"),
                         document.getString("description"),
-                        document.getString("imageUrl")
+                        document.getString("imageUrl"),
+                        document.getLong("sessionDuration")?.toInt()
                     )
                     list.add(service)
                 }
-                listServiceAdapter.notifyDataSetChanged()
+                binding.serviceList.adapter?.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
                 // Handle errors (e.g., show a toast message)
-                // Log.e("FirestoreError", "Error getting documents: ", exception)
             }
     }
 }

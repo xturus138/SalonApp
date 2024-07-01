@@ -1,4 +1,4 @@
-package com.example.comfestsea16.activity
+package com.example.comfestsea16.activity.admin
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -149,7 +149,8 @@ class FormActivity : AppCompatActivity() {
             "number" to phoneNumber,
             "service" to service,
             "time" to time,
-            "date" to date
+            "date" to date,
+            "status" to "pending"
         )
 
         db.collection("user").document(userId).collection("bookings").document(bookingId).set(bookingData)
