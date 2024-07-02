@@ -18,7 +18,8 @@
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
+        app:srcCompat="@drawable/baseline_arrow_back_ios_24"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/reviewTitleTextView"
@@ -41,6 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:hint="@string/nama_anda"
+        app:hintTextColor="@color/black"
         app:boxStrokeColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reviewTitleTextView">
@@ -61,6 +63,7 @@
         android:numStars="5"
         android:stepSize="1"
         app:layout_constraintEnd_toEndOf="parent"
+        android:progressTint="#FFEB3B"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameInputLayout" />
 
@@ -71,6 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="@string/tulis_ulasan_anda"
+        app:hintTextColor="@color/black"
         app:boxStrokeColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar">

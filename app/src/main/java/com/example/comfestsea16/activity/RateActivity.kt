@@ -64,7 +64,6 @@ class RateActivity : AppCompatActivity() {
                 .addOnSuccessListener { document ->
                     if (document.exists()) {
                         val name = document.getString("name")
-                        // Get reference to the EditText directly
                         val nameEditText = findViewById<EditText>(R.id.nameEditText)
                         nameEditText.setText(name)
                     } else {
@@ -97,7 +96,6 @@ class RateActivity : AppCompatActivity() {
             "serviceType" to serviceType
         )
 
-        // Store reviews in a subcollection under the user's document
         db.collection("user").document(userId).collection("reviews").document(reviewId)
             .set(reviewData)
             .addOnSuccessListener {

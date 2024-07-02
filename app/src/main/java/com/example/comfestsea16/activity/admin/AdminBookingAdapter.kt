@@ -1,5 +1,6 @@
 package com.example.comfestsea16.activity.admin
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ class AdminBookingAdapter(private val bookings: MutableList<BookingAdmin>) : Rec
         return BookingViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: BookingViewHolder, position: Int) {
         val booking = bookings[position]
         holder.binding.appointmentDate.text = "${booking.date}, ${booking.time}"
@@ -27,7 +29,7 @@ class AdminBookingAdapter(private val bookings: MutableList<BookingAdmin>) : Rec
 
     override fun getItemCount(): Int = bookings.size
 
-    // Method to get bookings with changed statuses
+
     fun getBookingsWithChangedStatus(): List<BookingAdmin> {
         return bookings.filter { it.isChecked && it.status != "booked" }
     }

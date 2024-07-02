@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Comfest SEA 16</string>
     <string name="customer_service">Customer Service</string>
-    <string name="customer_hello">Hi, Raditya</string>
+    <string name="customer_hello">Hi, User</string>
     <string name="our_service">Our Service</string>
     <string name="title">Welcome to SEA SALON!</string>
     <string name="description">Beauty and Elegance Redefined</string>
@@ -51,6 +51,14 @@
     <string name="service_type">Service Type</string>
     <string name="review_service">REVIEW SERVICE</string>
     <string name="submit">Submit</string>
+    <string name="profile">PROFILE</string>
+    <string name="this_is_your_profile">THIS IS YOUR PROFILE</string>
+    <string name="your_email">Your Email</string>
+    <string name="your_name">Your Name</string>
+    <string name="logout">LOGOUT</string>
+    <string name="email">Email</string>
+    <string name="full_name1">Full Name</string>
+    <string name="your_number">Your Number</string>
 
     <string-array name="data_name">
         <item>Haircut &amp; Styling</item>

@@ -22,7 +22,7 @@ class AccAdmin : AppCompatActivity() {
         adapter = AdminBookingAdapter(bookingsList)
         binding.recyclerViewBookings.adapter = adapter
 
-        fetchBookingsData() // Initial fetch
+        fetchBookingsData()
 
         binding.saveButton.setOnClickListener {
             updateBookingStatuses { success ->

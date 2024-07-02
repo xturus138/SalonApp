@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.comfestsea16.authentication.login.LoginActivity
 import com.example.comfestsea16.databinding.CardHomeLayoutBinding
 import com.example.comfestsea16.databinding.FragmentFirstBinding
 import com.example.comfestsea16.fragment.form.FormActivity
@@ -57,7 +56,7 @@ class FirstFragment : Fragment() {
                 if (document != null && document.exists()) {
                     val userName = document.getString("name")
                     val finalUserName = "Hi, ${userName ?: user.email}"
-                    userText.text = finalUserName // Use name if available, else fallback to email
+                    userText.text = finalUserName
                 } else {
                     Log.d(TAG, "No such document")
                 }
@@ -65,14 +64,6 @@ class FirstFragment : Fragment() {
             .addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
             }
-
-        val logoutButton = binding.logoutSementara
-        logoutButton.setOnClickListener(){
-            FirebaseAuth.getInstance().signOut()
-            val intent=
-                Intent(this@FirstFragment.requireContext(), LoginActivity::class.java)
-            startActivity(intent)
-        }
 
     }
 
@@ -106,7 +97,7 @@ class FirstFragment : Fragment() {
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     val service = document.toObject(Service::class.java)
-                    service.id = document.id // Set the document ID in the data object
+                    service.id = document.id
                     list.add(service)
                     rvService.adapter?.notifyDataSetChanged()
                     progressBar.visibility = View.GONE
@@ -115,14 +106,13 @@ class FirstFragment : Fragment() {
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Error getting documents: ", exception)
-                // Handle error, e.g., show a message to the user
                 progressBar.visibility = View.GONE
             }
     }
 
 
     private fun showSelectedService(service: Service) {
-        Toast.makeText(requireContext(), "Kamu memilih ${service.name}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Please select the service again in the form!", Toast.LENGTH_LONG).show()
     }
 
     private fun navigateItems(){

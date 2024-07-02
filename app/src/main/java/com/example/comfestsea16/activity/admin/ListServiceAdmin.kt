@@ -24,12 +24,12 @@ class ListServiceAdmin(private val listService: ArrayList<Service>) : RecyclerVi
         holder.binding.tvItemName.text = service.name
         holder.binding.tvItemDescription.text = service.description
 
-        // Load image using Glide
+
         Glide.with(holder.itemView.context)
             .load(service.imageUrl)
             .into(holder.binding.imgItemPhoto)
 
-        // Remove the click listener (or make it a no-op)
-        holder.itemView.setOnClickListener(null) // Or use an empty lambda: {}
+
+        holder.itemView.setOnClickListener(null)
     }
 }

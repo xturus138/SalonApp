@@ -1,14 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.profile.ThirdFragment">
+    android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/header"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="@string/profile"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/this_is_your_profile"
+                android:textColor="#fbc02d" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title_edit_fullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="35dp"
+            android:text="@string/full_name1"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <EditText
+            android:id="@+id/fullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/textbpx"
+            android:hint="@string/your_name"
+            android:enabled="false"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_edit_fullname"
+            android:autofillHints=""
+            tools:ignore="TextFields,VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/title_edit_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="35dp"
+            android:text="@string/email"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fullName" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/textbpx"
+            android:hint="@string/your_email"
+            android:minHeight="48dp"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_edit_email"
+            android:autofillHints=""
+            tools:ignore="TextFields,VisualLintTextFieldSize" />
+
+        <TextView
+            android:id="@+id/title_edit_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="35dp"
+            android:text="Phone Number"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/textbpx"
+            android:hint="@string/your_number"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:enabled="false"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_edit_number"
+            android:autofillHints=""
+            tools:ignore="TextFields,VisualLintTextFieldSize" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/logoutButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button"
+            android:text="@string/logout"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
+            tools:ignore="VisualLintButtonSize" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -24,9 +24,8 @@ class AdminActivity : AppCompatActivity() {
         binding = ActivityAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initialize RecyclerView and Adapter (use ListServiceAdmin)
         binding.serviceList.layoutManager = LinearLayoutManager(this)
-        val listServiceAdapter = ListServiceAdmin(list) // Changed to ListServiceAdmin
+        val listServiceAdapter = ListServiceAdmin(list)
         binding.serviceList.adapter = listServiceAdapter
 
         binding.backButton.setOnClickListener(){
@@ -79,7 +78,6 @@ class AdminActivity : AppCompatActivity() {
 
 
 
-        // Fetch data from Firestore (same as before)
         val db = FirebaseFirestore.getInstance()
         db.collection("services")
             .get()
@@ -97,7 +95,6 @@ class AdminActivity : AppCompatActivity() {
                 binding.serviceList.adapter?.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
-                // Handle errors (e.g., show a toast message)
             }
     }
 }

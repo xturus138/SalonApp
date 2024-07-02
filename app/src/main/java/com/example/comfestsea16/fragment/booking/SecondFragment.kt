@@ -76,14 +76,17 @@ class SecondFragment : Fragment() {
     }
 
     private fun filterBookings(showUpcoming: Boolean) {
-        val filteredBookings = if (showUpcoming) {
-            allBookings.filter { it.status == "pending" }
+        if (::allBookings.isInitialized) {
+            val filteredBookings = if (showUpcoming) {
+                allBookings.filter { it.status == "pending" }
+            } else {
+                allBookings.filter { it.status == "booked" }
+            }
+            viewLifecycleOwner.lifecycleScope.launch {
+                adapter.updateBookings(filteredBookings)
+            }
         } else {
-            allBookings
-        }
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            adapter.updateBookings(filteredBookings)
+            Log.e(TAG, "Error getting filtered Bookings")
         }
     }
 

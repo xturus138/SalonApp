@@ -13,24 +13,14 @@ import androidx.lifecycle.Observer
 import com.example.comfestsea16.authentication.login.LoginActivity
 import com.example.comfestsea16.databinding.ActivityRegisterBinding
 import com.example.comfestsea16.main.MainActivity
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.firestore
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
-    private lateinit var database: DatabaseReference
     private val registerViewModel: RegisterViewModel by viewModels()
-    private var db = Firebase.firestore
-    private lateinit var auth: FirebaseAuth
-    private lateinit var userId: FirebaseUser
 
     public override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = registerViewModel.getCurrentUser()
         if (currentUser != null) {
             val intent = Intent(this, MainActivity::class.java)
@@ -76,11 +66,11 @@ class RegisterActivity : AppCompatActivity() {
                 progressBar.visibility = View.VISIBLE
                 registerViewModel.register(emailText, passwordText) // Initiate registration
 
-                registerViewModel.registerResult.observe(this, Observer { user ->
+                registerViewModel.registerResult.observe(this) { user ->
                     progressBar.visibility = View.GONE
                     if (user != null) {
                         // Registration successful
-                        val userId = user.uid // Capture the uid of the newly created user
+                        val userId = user.uid
                         saveUserDataToFirestore(userId, fullNameText, phoneNumberText)
 
                         Log.d(TAG, "createUserWithEmail:success")
@@ -90,10 +80,10 @@ class RegisterActivity : AppCompatActivity() {
                         finish()
                     } else {
                         Log.w(TAG, "createUserWithEmail:failure")
-                        Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT)
+                            .show()
                     }
-                })
-
+                }
 
 
             }
