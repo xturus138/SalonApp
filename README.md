@@ -101,7 +101,20 @@ This application uses several depedencies:
     ```
 2. **Open in Android Studio:** Navigate to the cloned directory and open it in Android Studio.
 3. **Build and Run:** Sync the project with Gradle files, then build and run the app on an emulator or device.
+- Optional:
+4. **Set up Firebase:** Follow the [Firebase setup instructions](https://firebase.google.com/docs/android/setup) to connect your project to Firebase.
+<img src="https://github.com/xturus138/SalonApp/assets/156584367/66e5ae79-5427-48cb-9560-275e5840f703" width="400" alt="Database">
+<img src="https://github.com/xturus138/SalonApp/assets/156584367/9241c03c-5808-415f-b666-20f4b4b9f45f" width="400" alt="Database">
+<img src="https://github.com/xturus138/SalonApp/assets/156584367/3c5b740e-4c08-4659-808d-ebf5d20bdbd7" width="400" alt="Database">
+<img src="https://github.com/xturus138/SalonApp/assets/156584367/169dc261-fdcb-4fce-bd50-5b0551ad3e89" width="400" alt="Database">
 
+## Contact
 
+How to Reach Me!:
+
+- **Email:** radityaramadhan.138@gmail.com
+- **GitHub:** [xturus138](https://github.com/xturus138)
+
+Thank you for choosing the Salon Services Booking App!
 
 
