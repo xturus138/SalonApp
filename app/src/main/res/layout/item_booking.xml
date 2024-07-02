@@ -32,6 +32,7 @@
         <TextView
             android:id="@+id/appointmentName"
             android:layout_width="wrap_content"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Customer Name" />
@@ -39,6 +40,7 @@
         <CheckBox
             android:id="@+id/bookingStatus"
             android:layout_width="wrap_content"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Mark as Booked" />
